@@ -1,0 +1,31 @@
+---
+
+galaxy_info:
+  role_name: neovim
+  namespace: provizanta
+  author: Tibor Csóka
+  description: |
+    "Establish neovim with the specified configuration."
+  company: ""
+
+  license: MIT
+
+  min_ansible_version: 2.7.1
+
+  platforms:
+    - name: Darwin
+    - name: Ubuntu
+      versions:
+        - focal
+        - bionic
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+
+  galaxy_tags:
+    - neovim
+    - vim
+    - lua
+
+dependencies: []

@@ -1,0 +1,5 @@
+---
+
+neovim_command: 'nvim'
+
+neovim_config_files_path: ~/.config/nvim/

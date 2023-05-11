@@ -1,0 +1,28 @@
+---
+
+- name: establish packages
+  become: "{{ (ansible_system == 'Linux') | bool }}"
+  package:
+    name:
+      - git
+      - neovim
+    state: present
+  tags: install
+
+- name: ensure config path presence
+  loop: "{{ [neovim_config_files_path] + (neovim_configuration | dict2items | map(attribute='key') | select() | list) }}"
+  file:
+    path: "{{ item }}"
+    state: directory
+  tags: install
+
+- name: establish configuration
+  loop: "{{ neovim_configuration | dict2items }}"
+  copy:
+    content: |
+      " WARNING: This file is generated and managed by Ansible
+      "
+
+      {{ item.value }}
+    dest: "{{ neovim_config_files_path }}/{{ item.key }}"
+  tags: configure
